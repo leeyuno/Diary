@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="MainViewController" id="BYZ-38-t0r" customClass="MainViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gh7-G9-ltV">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uor-7S-F5f">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7FV-C4-dX8">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="1us-1j-dqa">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="gh7-G9-ltV" secondAttribute="bottom" id="9Cx-qK-6MM"/>
+                            <constraint firstItem="gh7-G9-ltV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fUS-BB-OhQ"/>
+                            <constraint firstItem="gh7-G9-ltV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="nGc-L2-pzz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gh7-G9-ltV" secondAttribute="trailing" id="uPm-SV-oJN"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="photo.on.rectangle.angled" catalog="system" id="SGO-tR-w2B"/>
+                    <navigationItem key="navigationItem" id="JV9-Qh-eka"/>
+                    <connections>
+                        <outlet property="collectionView" destination="gh7-G9-ltV" id="ukG-8C-4u6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1801" y="-103"/>
+        </scene>
+        <!--Main Tab Bar View Controller-->
+        <scene sceneID="a9j-7T-Zlf">
+            <objects>
+                <tabBarController storyboardIdentifier="MainTabBarViewController" automaticallyAdjustsScrollViewInsets="NO" id="wPo-Um-Zsa" customClass="MainTabBarViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="dL5-bz-NiB"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Jcu-0R-rq3">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="2Ro-Sc-T6J"/>
+                        <segue destination="2iO-Zp-HLY" kind="relationship" relationship="viewControllers" id="ErT-sl-qss"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z10-ra-jgY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="986.95652173913049" y="137.94642857142856"/>
+        </scene>
+        <!--Upload View Controller-->
+        <scene sceneID="mUn-PA-VCe">
+            <objects>
+                <viewController storyboardIdentifier="UploadViewController" id="2iO-Zp-HLY" customClass="UploadViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZDc-bo-94b">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="If2-dH-392">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                            </imageView>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smiley" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="TZx-Lo-p1i">
+                                <rect key="frame" x="157" y="398.5" width="100" height="99"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="PLD-gz-EXW"/>
+                                    <constraint firstAttribute="width" constant="100" id="bPc-v8-coi"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="p8E-qD-hct"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="TZx-Lo-p1i" firstAttribute="centerX" secondItem="ZDc-bo-94b" secondAttribute="centerX" id="0Ce-hV-WxO"/>
+                            <constraint firstItem="If2-dH-392" firstAttribute="top" secondItem="p8E-qD-hct" secondAttribute="top" id="4py-eE-91m"/>
+                            <constraint firstItem="p8E-qD-hct" firstAttribute="trailing" secondItem="If2-dH-392" secondAttribute="trailing" id="DX8-v2-Tdv"/>
+                            <constraint firstItem="p8E-qD-hct" firstAttribute="bottom" secondItem="If2-dH-392" secondAttribute="bottom" id="MHn-EG-cGe"/>
+                            <constraint firstItem="TZx-Lo-p1i" firstAttribute="centerY" secondItem="ZDc-bo-94b" secondAttribute="centerY" id="pX6-Ws-l2N"/>
+                            <constraint firstItem="If2-dH-392" firstAttribute="leading" secondItem="p8E-qD-hct" secondAttribute="leading" id="qTH-FN-RCT"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="plus.app" catalog="system" id="IxT-bM-p21"/>
+                    <connections>
+                        <outlet property="emotionButton" destination="TZx-Lo-p1i" id="9Tj-Ms-L4O"/>
+                        <outlet property="imageView" destination="If2-dH-392" id="GbV-2p-y1C"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="02Q-Zx-yDa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1800" y="568"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="photo.on.rectangle.angled" catalog="system" width="128" height="101"/>
+        <image name="plus.app" catalog="system" width="128" height="114"/>
+        <image name="smiley" catalog="system" width="128" height="121"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

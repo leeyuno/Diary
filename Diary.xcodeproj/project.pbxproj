@@ -17,7 +17,6 @@
 		4F18088425D234F9006A021B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F18088225D234F9006A021B /* LaunchScreen.storyboard */; };
 		4F18088F25D234F9006A021B /* DiaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F18088E25D234F9006A021B /* DiaryTests.swift */; };
 		4F18089A25D234F9006A021B /* DiaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F18089925D234F9006A021B /* DiaryUITests.swift */; };
-		4F1808AC25D235F4006A021B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F1808AB25D235F4006A021B /* GoogleService-Info.plist */; };
 		4F265DAE25D237D9008A8C88 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F265DAD25D237D9008A8C88 /* MainViewController.swift */; };
 		4F265DBE25D238A6008A8C88 /* MainViewImageCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F265DBC25D238A6008A8C88 /* MainViewImageCCell.swift */; };
 		4F265DBF25D238A6008A8C88 /* MainViewImageCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F265DBD25D238A6008A8C88 /* MainViewImageCCell.xib */; };
@@ -29,6 +28,20 @@
 		4F265E2525D25ABD008A8C88 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F265E2425D25ABD008A8C88 /* MainTabBarViewController.swift */; };
 		4F265E2D25D25BFC008A8C88 /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F265E2C25D25BFC008A8C88 /* UploadViewController.swift */; };
 		4F265E3325D26545008A8C88 /* UploadViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F265E3225D26545008A8C88 /* UploadViewReactor.swift */; };
+		4F49D51C25D7B3FA002A96C2 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F49D51B25D7B3FA002A96C2 /* DetailViewController.swift */; };
+		4F6A83EF25D4EA9E000EE492 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F6A83EE25D4EA9E000EE492 /* GoogleService-Info.plist */; };
+		4F6A83F725D4FF46000EE492 /* MainViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6A83F625D4FF46000EE492 /* MainViewReactor.swift */; };
+		4F6A83FC25D501F3000EE492 /* MainEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6A83FB25D501F3000EE492 /* MainEntity.swift */; };
+		4F6A840225D50EB6000EE492 /* MainReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6A840025D50EB6000EE492 /* MainReusableView.swift */; };
+		4F6A840325D50EB6000EE492 /* MainReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F6A840125D50EB6000EE492 /* MainReusableView.xib */; };
+		4F76276225D631C000AF35E1 /* ImageCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F76276025D631C000AF35E1 /* ImageCCell.swift */; };
+		4F76276325D631C000AF35E1 /* ImageCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F76276125D631C000AF35E1 /* ImageCCell.xib */; };
+		4F7CF38625D286400075997B /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7CF38525D286400075997B /* UIColor+Extension.swift */; };
+		4F7CF38D25D29F440075997B /* TagCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7CF38B25D29F440075997B /* TagCCell.swift */; };
+		4F7CF38E25D29F440075997B /* TagCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7CF38C25D29F440075997B /* TagCCell.xib */; };
+		4F7CF39325D2A3A90075997B /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7CF39225D2A3A90075997B /* CALayer+Extension.swift */; };
+		4F7CF39925D2A6550075997B /* CustomTextFIeld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7CF39825D2A6550075997B /* CustomTextFIeld.swift */; };
+		4FB70F1F25D37EF20080B4FC /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB70F1E25D37EF20080B4FC /* Source.swift */; };
 		5343607A05D50E08665ECC11 /* Pods_DiaryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EA3F241140ED8DD189AD694 /* Pods_DiaryTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,7 +78,6 @@
 		4F18089525D234F9006A021B /* DiaryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiaryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F18089925D234F9006A021B /* DiaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryUITests.swift; sourceTree = "<group>"; };
 		4F18089B25D234F9006A021B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4F1808AB25D235F4006A021B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4F265DAD25D237D9008A8C88 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4F265DBC25D238A6008A8C88 /* MainViewImageCCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewImageCCell.swift; sourceTree = "<group>"; };
 		4F265DBD25D238A6008A8C88 /* MainViewImageCCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewImageCCell.xib; sourceTree = "<group>"; };
@@ -78,7 +90,21 @@
 		4F265E2425D25ABD008A8C88 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		4F265E2C25D25BFC008A8C88 /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		4F265E3225D26545008A8C88 /* UploadViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewReactor.swift; sourceTree = "<group>"; };
+		4F49D51B25D7B3FA002A96C2 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		4F6A83EE25D4EA9E000EE492 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4F6A83F625D4FF46000EE492 /* MainViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewReactor.swift; sourceTree = "<group>"; };
+		4F6A83FB25D501F3000EE492 /* MainEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainEntity.swift; sourceTree = "<group>"; };
+		4F6A840025D50EB6000EE492 /* MainReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainReusableView.swift; sourceTree = "<group>"; };
+		4F6A840125D50EB6000EE492 /* MainReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainReusableView.xib; sourceTree = "<group>"; };
+		4F76276025D631C000AF35E1 /* ImageCCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCCell.swift; sourceTree = "<group>"; };
+		4F76276125D631C000AF35E1 /* ImageCCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCCell.xib; sourceTree = "<group>"; };
 		4F79F42413547082566A4822 /* Pods-Diary-DiaryUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diary-DiaryUITests.release.xcconfig"; path = "Target Support Files/Pods-Diary-DiaryUITests/Pods-Diary-DiaryUITests.release.xcconfig"; sourceTree = "<group>"; };
+		4F7CF38525D286400075997B /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		4F7CF38B25D29F440075997B /* TagCCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCCell.swift; sourceTree = "<group>"; };
+		4F7CF38C25D29F440075997B /* TagCCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagCCell.xib; sourceTree = "<group>"; };
+		4F7CF39225D2A3A90075997B /* CALayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
+		4F7CF39825D2A6550075997B /* CustomTextFIeld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFIeld.swift; sourceTree = "<group>"; };
+		4FB70F1E25D37EF20080B4FC /* Source.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
 		5CC4B5C9BB4F8FFF28EC310F /* Pods-Diary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diary.debug.xcconfig"; path = "Target Support Files/Pods-Diary/Pods-Diary.debug.xcconfig"; sourceTree = "<group>"; };
 		62DF2DB1533D38C33BEE0488 /* Pods_Diary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		78896FEF8A423C464DE2A2D6 /* Pods-DiaryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiaryTests.debug.xcconfig"; path = "Target Support Files/Pods-DiaryTests/Pods-DiaryTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -164,6 +190,8 @@
 		4F18087325D234F8006A021B /* Diary */ = {
 			isa = PBXGroup;
 			children = (
+				4F7CF39725D2A6430075997B /* Library */,
+				4F7CF38425D286350075997B /* Extension */,
 				4F265DD725D23D1F008A8C88 /* Library.swift */,
 				4F265DC325D23A21008A8C88 /* SignIn */,
 				4F265DAC25D237C6008A8C88 /* Main */,
@@ -194,8 +222,8 @@
 		4F1808AA25D235E4006A021B /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				4F6A83EE25D4EA9E000EE492 /* GoogleService-Info.plist */,
 				4F265DE525D243E9008A8C88 /* Diary.entitlements */,
-				4F1808AB25D235F4006A021B /* GoogleService-Info.plist */,
 				4F18087425D234F8006A021B /* AppDelegate.swift */,
 				4F18087625D234F8006A021B /* SceneDelegate.swift */,
 				4F18088025D234F9006A021B /* Assets.xcassets */,
@@ -209,10 +237,10 @@
 		4F265DAC25D237C6008A8C88 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				4F265E3125D26536008A8C88 /* UploadViewController */,
-				4F265DB825D2383F008A8C88 /* Cell */,
+				4F49D51A25D7B3EB002A96C2 /* Detail */,
+				4F99CEC925D7928900710A57 /* Main */,
+				4F265E3125D26536008A8C88 /* Upload */,
 				4F18087A25D234F8006A021B /* Main.storyboard */,
-				4F265DAD25D237D9008A8C88 /* MainViewController.swift */,
 				4F265E2425D25ABD008A8C88 /* MainTabBarViewController.swift */,
 			);
 			path = Main;
@@ -223,6 +251,8 @@
 			children = (
 				4F265DBC25D238A6008A8C88 /* MainViewImageCCell.swift */,
 				4F265DBD25D238A6008A8C88 /* MainViewImageCCell.xib */,
+				4F6A840025D50EB6000EE492 /* MainReusableView.swift */,
+				4F6A840125D50EB6000EE492 /* MainReusableView.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -237,13 +267,62 @@
 			path = SignIn;
 			sourceTree = "<group>";
 		};
-		4F265E3125D26536008A8C88 /* UploadViewController */ = {
+		4F265E3125D26536008A8C88 /* Upload */ = {
 			isa = PBXGroup;
 			children = (
+				4F7CF38A25D29F320075997B /* Cell */,
 				4F265E2C25D25BFC008A8C88 /* UploadViewController.swift */,
 				4F265E3225D26545008A8C88 /* UploadViewReactor.swift */,
 			);
-			path = UploadViewController;
+			path = Upload;
+			sourceTree = "<group>";
+		};
+		4F49D51A25D7B3EB002A96C2 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				4F49D51B25D7B3FA002A96C2 /* DetailViewController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		4F7CF38425D286350075997B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				4F7CF38525D286400075997B /* UIColor+Extension.swift */,
+				4F7CF39225D2A3A90075997B /* CALayer+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		4F7CF38A25D29F320075997B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4F7CF38B25D29F440075997B /* TagCCell.swift */,
+				4F7CF38C25D29F440075997B /* TagCCell.xib */,
+				4F76276025D631C000AF35E1 /* ImageCCell.swift */,
+				4F76276125D631C000AF35E1 /* ImageCCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		4F7CF39725D2A6430075997B /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				4F7CF39825D2A6550075997B /* CustomTextFIeld.swift */,
+				4FB70F1E25D37EF20080B4FC /* Source.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		4F99CEC925D7928900710A57 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				4F265DAD25D237D9008A8C88 /* MainViewController.swift */,
+				4F6A83F625D4FF46000EE492 /* MainViewReactor.swift */,
+				4F6A83FB25D501F3000EE492 /* MainEntity.swift */,
+				4F265DB825D2383F008A8C88 /* Cell */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,12 +433,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F6A840325D50EB6000EE492 /* MainReusableView.xib in Resources */,
 				4F18088425D234F9006A021B /* LaunchScreen.storyboard in Resources */,
-				4F1808AC25D235F4006A021B /* GoogleService-Info.plist in Resources */,
 				4F18088125D234F9006A021B /* Assets.xcassets in Resources */,
+				4F76276325D631C000AF35E1 /* ImageCCell.xib in Resources */,
+				4F7CF38E25D29F440075997B /* TagCCell.xib in Resources */,
 				4F18087C25D234F8006A021B /* Main.storyboard in Resources */,
 				4F265DCA25D23A3F008A8C88 /* SignIn.storyboard in Resources */,
 				4F265DBF25D238A6008A8C88 /* MainViewImageCCell.xib in Resources */,
+				4F6A83EF25D4EA9E000EE492 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,13 +573,23 @@
 				4F265E2D25D25BFC008A8C88 /* UploadViewController.swift in Sources */,
 				4F265DBE25D238A6008A8C88 /* MainViewImageCCell.swift in Sources */,
 				4F265E1825D250D0008A8C88 /* CodeDataStore.swift in Sources */,
+				4F7CF39925D2A6550075997B /* CustomTextFIeld.swift in Sources */,
 				4F265E2525D25ABD008A8C88 /* MainTabBarViewController.swift in Sources */,
 				4F265DD825D23D1F008A8C88 /* Library.swift in Sources */,
+				4FB70F1F25D37EF20080B4FC /* Source.swift in Sources */,
+				4F7CF38D25D29F440075997B /* TagCCell.swift in Sources */,
 				4F265E3325D26545008A8C88 /* UploadViewReactor.swift in Sources */,
+				4F6A83FC25D501F3000EE492 /* MainEntity.swift in Sources */,
+				4F49D51C25D7B3FA002A96C2 /* DetailViewController.swift in Sources */,
+				4F7CF39325D2A3A90075997B /* CALayer+Extension.swift in Sources */,
+				4F6A840225D50EB6000EE492 /* MainReusableView.swift in Sources */,
 				4F18087525D234F8006A021B /* AppDelegate.swift in Sources */,
 				4F265DC525D23A32008A8C88 /* SignInViewController.swift in Sources */,
+				4F76276225D631C000AF35E1 /* ImageCCell.swift in Sources */,
 				4F18087725D234F8006A021B /* SceneDelegate.swift in Sources */,
+				4F7CF38625D286400075997B /* UIColor+Extension.swift in Sources */,
 				4F18087F25D234F8006A021B /* Diary.xcdatamodeld in Sources */,
+				4F6A83F725D4FF46000EE492 /* MainViewReactor.swift in Sources */,
 				4F265DAE25D237D9008A8C88 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -683,7 +775,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.leeyuno.thatDay;
+				PRODUCT_BUNDLE_IDENTIFIER = com.leeyuno.thatDays;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -704,7 +796,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.leeyuno.thatDay;
+				PRODUCT_BUNDLE_IDENTIFIER = com.leeyuno.thatDays;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

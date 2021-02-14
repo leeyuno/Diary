@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>150783619526-fi8bghjm07sk4fjmba09do29tn1u5ab3.apps.googleusercontent.com</string>
+	<string>150783619526-qvtldbjganhbas92udb6gjgu686kbdtc.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.150783619526-fi8bghjm07sk4fjmba09do29tn1u5ab3</string>
+	<string>com.googleusercontent.apps.150783619526-qvtldbjganhbas92udb6gjgu686kbdtc</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDF0UNeeWHINPInSryvxaxDJ4RUP3PeRIs</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.leeyuno.Diary</string>
+	<string>com.leeyuno.thatDays</string>
 	<key>PROJECT_ID</key>
 	<string>thatday-721ff</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:150783619526:ios:eb5094b4622221e3ec82c7</string>
+	<string>1:150783619526:ios:33bfefc7edf866deec82c7</string>
+	<key>DATABASE_URL</key>
+	<string>https://thatday-721ff-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>

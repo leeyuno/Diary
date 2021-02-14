@@ -19,4 +19,8 @@ class Library {
     static let libObject = Library()
     
     var app_id: String?
+    
+//    let url = "http://192.168.0.9:3000"
+    let url = "http://192.168.1.21:3000"
+//    let url = "https://localhost:3000"
 }

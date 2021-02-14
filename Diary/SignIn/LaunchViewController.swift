@@ -5,9 +5,12 @@
 //  Created by leeyuno on 2021/02/09.
 //
 
+import AuthenticationServices
+import CoreData
 import UIKit
 
-import CoreData
+import Alamofire
+import FirebaseAuth
 
 class LaunchViewController: UIViewController {
     
@@ -18,14 +21,58 @@ class LaunchViewController: UIViewController {
         
         fetchCoreData()
         
+        reAuth()
+        
+//        UserDefaults.standard.setValue("leeyuno-test-v-1", forKey: "userId")
+
         //시뮬레이터 애플아이디 강제 세팅
 //        CoreDataStore.dataStore.setCoreData(data: CoreData(newId: "001766.28fa916e365c484f8fb8d971716c0579.0655"))
+    }
+    
+    private func moveToMain() {
+        DispatchQueue.main.async {
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainTabBarViewController") as! MainTabBarViewController
+            let nav = UINavigationController(rootViewController: vc)
+            
+            UIApplication.shared.windows.first?.rootViewController = nav
+            UIApplication.shared.windows.first?.makeKeyAndVisible()
+        }
+    }
+    
+    private func reAuth() {
+//        let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: <#T##String#>, rawNonce: currentNonce)
+        
+//        let userID = UserDefaults.standard.string(forKey: "userId") ?? ""
+//        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        
+        //Simulator Test
+//        moveToMain()
+        
+        if let _ = Auth.auth().currentUser {
+            moveToMain()
+        }
+        
+//        Auth.auth().currentUser?.link(with: userID, completion: { (result, error) in
+//            if let error = error {
+//
+//            }
+//        })
+        
+//        appleIDProvider.getCredentialState(forUserID: userID) { [weak weakSelf = self] (authResult, error) in
+//            if let error = error {
+//                print(error.localizedDescription)
+//            } else {
+//                print(debug: authResult)
+//                weakSelf?.moveToMain()
+//            }
+//        }
     }
     
     private func fetchCoreData() {
         if let coreData = CoreDataStore.dataStore.loadCoreData(), coreData.id != "" {
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainTabBarViewController") as! MainTabBarViewController
             let nav = UINavigationController(rootViewController: vc)
+            
             UIApplication.shared.windows.first?.rootViewController = nav
             UIApplication.shared.windows.first?.makeKeyAndVisible()
         } else {

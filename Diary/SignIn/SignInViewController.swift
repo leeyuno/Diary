@@ -10,9 +10,13 @@ import CryptoKit
 import CoreData
 import UIKit
 
+import Alamofire
+import ReactorKit
 import FirebaseAuth
 
 class SignInViewController: UIViewController {
+    
+    var disposeBag = DisposeBag()
     
     fileprivate var currentNonce: String?
     
@@ -107,6 +111,34 @@ class SignInViewController: UIViewController {
         return hashString
     }
     
+    func register(userID: String) {
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.M.d"
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        
+        let startDate = dateFormatter.string(from: date)
+        
+        AF.request(URL(string: Library.libObject.url + "/register")!, method: .post, parameters: ["userID": userID, "startDate": startDate], encoding: JSONEncoding.default, headers: nil, interceptor: nil, requestModifier: nil).responseJSON { [weak weakSelf = self] (response) in
+            switch response.result {
+            case .success(let value):
+                print(debug: value)
+                if let json = value as? NSDictionary {
+                    let code = json["code"] as! Int
+                    
+                    if code == 200 {
+
+                    } else {
+                        
+                    }
+                }
+            case .failure(let error):
+                print(debug: error.localizedDescription)
+            }
+        }
+    }
+    
     private func moveToMain() {
         DispatchQueue.main.async {
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainTabBarViewController") as! MainTabBarViewController
@@ -118,54 +150,31 @@ class SignInViewController: UIViewController {
     }
 }
 
+extension SignInViewController: StoryboardView {
+    func bind(reactor: SignInViewReactor) {
+        //action
+        
+        
+        //state
+    }
+}
+
 extension SignInViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return view.window!
     }
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-//        if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
-//            let userIdentifier = credential.user
-//            let fullName = credential.fullName
-//            let email = credential.email
-//
-//            let token = credential.identityToken?.base64EncodedString()
-//
-//            let provider = ASAuthorizationAppleIDProvider()
-//            provider.getCredentialState(forUserID: userIdentifier) { [weak weakSelf = self] (credentialState, error) in
-//                switch credentialState {
-//                case .authorized:
-//                    print(debug: "id: \(userIdentifier), name: \(fullName?.familyName ?? "") \(fullName?.givenName ?? ""), email: \(email ?? ""), token: \(token ?? "")")
-////                    let coreData = CoreData(newId: userIdentifier)
-////                    CoreDataStore.dataStore.setCoreData(data: coreData)
-//
-//                    weakSelf?.moveToMain()
-//
-//
-//                //                    UIApplication.shared.windows.first?.rootViewController = vc
-//                //                    UIApplication.shared.windows.first?.makeKeyAndVisible()
-//                case .revoked:
-//                    print(debug: "만료")
-//                case .notFound:
-//                    print(debug: "찾을 수 없음")
-//                case .transferred:
-//                    print(debug: "변경")
-//                default:
-//                    break
-//                }
-//            }
-//        }
-        
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             guard let nonce = currentNonce else {
                 fatalError("Invalid state: A login callback was received, but no login request was sent.")
             }
             guard let appleIDToken = appleIDCredential.identityToken else {
-                print("Unable to fetch identity token")
+                print(debug: "Unable to fetch identity token")
                 return
             }
             guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
-                print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
+                print(debug: "Unable to serialize token string from data: \(appleIDToken.debugDescription)")
                 return
             }
             // Initialize a Firebase credential.
@@ -173,24 +182,27 @@ extension SignInViewController: ASAuthorizationControllerDelegate, ASAuthorizati
                                                       idToken: idTokenString,
                                                       rawNonce: nonce)
 
-            // Sign in with Firebase.
             Auth.auth().signIn(with: credential) { [weak weakSelf = self] (authResult, error) in
                 if let error = error {
-                    // Error. If error.code == .MissingOrInvalidNonce, make sure
-                    // you're sending the SHA256-hashed nonce as a hex string with
-                    // your request to Apple.
                     print(debug: error.localizedDescription)
                     return
                 } else {
                     let userIdentifier = appleIDCredential.user
-                    UserDefaults.standard.setValue(userIdentifier, forKey: "userId")
-//                    let coreData = CoreData(newId: userIdentifier)
-//                    CoreDataStore.dataStore.setCoreData(data: coreData)
+                    
+                    weakSelf?.register(userID: Auth.auth().currentUser?.uid ?? "")
                     weakSelf?.moveToMain()
                 }
-                // User is signed in to Firebase with Apple.
-                // ...
             }
+            
+//            Auth.auth().currentUser?.reauthenticate(with: credential, completion: { [weak weakSelf = self] (authResult, error) in
+//                if let error = error {
+//                    print(error.localizedDescription)
+//                } else {
+//                    weakSelf?.moveToMain()
+//                }
+//            })
+            // Sign in with Firebase.
+            
         }
     }
     

@@ -7,6 +7,8 @@
 
 import UIKit
 
+import Toaster
+
 class MainTabBarViewController: UITabBarController {
 
     override func viewDidLoad() {
@@ -35,6 +37,10 @@ class MainTabBarViewController: UITabBarController {
             if let vc = view as? UploadViewController {
                 vc.reactor = UploadViewReactor()
             }
+            
+            if let vc = view as? ProfileViewController {
+                vc.reactor = ProfileViewReactor()
+            }
         }
     }
 }
@@ -44,7 +50,12 @@ extension MainTabBarViewController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if tabBarController.selectedIndex == 1 {
             if let vc = viewController as? UploadViewController {
-                vc.selectedImage()
+                print(debug: Library.libObject.todo)
+                if Library.libObject.todo {
+                    Toast(text: "오늘 일기는 벌써 썼어요", delay: 0.0, duration: 5.0).show()
+                } else {
+                    vc.selectedImage()
+                }
             }
         }
     }

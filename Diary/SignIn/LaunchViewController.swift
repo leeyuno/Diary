@@ -19,8 +19,17 @@ class LaunchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetchCoreData()
-        
+//        fetchCoreData()
+//        let user = Auth.auth().currentUser
+//
+//        user?.delete(completion: { (error) in
+//            let vc = UIStoryboard(name: "SignIn", bundle: nil).instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+//            vc.reactor = SignInViewReactor()
+//            UIApplication.shared.windows.first?.rootViewController = vc
+//            UIApplication.shared.windows.first?.makeKeyAndVisible()
+//            print(debug: error?.localizedDescription)
+//        })
+//
         reAuth()
         
 //        UserDefaults.standard.setValue("leeyuno-test-v-1", forKey: "userId")
@@ -47,9 +56,16 @@ class LaunchViewController: UIViewController {
         
         //Simulator Test
 //        moveToMain()
+//        print(debug: UserDefaults.standard.value(forKey: "userId"))
+//        print(debug: Auth.auth().currentUser)
         
         if let _ = Auth.auth().currentUser {
             moveToMain()
+        } else {
+            let vc = UIStoryboard(name: "SignIn", bundle: nil).instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+            vc.reactor = SignInViewReactor()
+            UIApplication.shared.windows.first?.rootViewController = vc
+            UIApplication.shared.windows.first?.makeKeyAndVisible()
         }
         
 //        Auth.auth().currentUser?.link(with: userID, completion: { (result, error) in
@@ -77,6 +93,7 @@ class LaunchViewController: UIViewController {
             UIApplication.shared.windows.first?.makeKeyAndVisible()
         } else {
             let vc = UIStoryboard(name: "SignIn", bundle: nil).instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+            vc.reactor = SignInViewReactor()
             UIApplication.shared.windows.first?.rootViewController = vc
             UIApplication.shared.windows.first?.makeKeyAndVisible()
         }

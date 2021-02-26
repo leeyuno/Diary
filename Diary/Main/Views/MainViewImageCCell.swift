@@ -35,8 +35,7 @@ class MainViewImageCCell: UICollectionViewCell {
     }
     
     func setGradient() {
-        var gradient = CAGradientLayer()
-        gradient = CAGradientLayer()
+        let gradient = CAGradientLayer()
         gradient.locations = [0.0, 0.5, 1.0]
         gradient.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
         gradient.colors = [UIColor.lightGray.withAlphaComponent(0.4).cgColor, UIColor.clear.cgColor, UIColor.lightGray.withAlphaComponent(0.4).cgColor]

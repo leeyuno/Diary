@@ -198,7 +198,6 @@ extension UploadViewController: UICollectionViewDelegate, UICollectionViewDataSo
         } else {
 //            let item = FeelImages.sharedInstance.items[Int(tasks?.feels?[indexPath.row] ?? "0")!]
             let item = FeelImages.sharedInstance.items[tasks?.feels?[indexPath.row] ?? 0]
-            print(debug: item)
             cell.circleButton.setImage(UIImage(systemName: item.icon), for: .normal)
             cell.circleButton.backgroundColor = item.color
             
@@ -249,7 +248,7 @@ extension UploadViewController: StoryboardView {
                     Library.libObject.todo = true
                     weakSelf?.viewInitialize()
                 } else {
-                    Toast(text: "오늘 일기는 벌써 썼어요", delay: 0.0, duration: 5.0).show()
+//                    Toast(text: "오늘 일기는 벌써 썼어요", delay: 0.0, duration: 5.0).show()
                 }
             } else {
                 print(debug: "초기")

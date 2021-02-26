@@ -50,9 +50,8 @@ extension MainTabBarViewController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if tabBarController.selectedIndex == 1 {
             if let vc = viewController as? UploadViewController {
-                print(debug: Library.libObject.todo)
                 if Library.libObject.todo {
-                    Toast(text: "오늘 일기는 벌써 썼어요", delay: 0.0, duration: 5.0).show()
+                    Toast(text: "오늘 일기는 벌써 썼어요", delay: 0.0, duration: 3.0).show()
                 } else {
                     vc.selectedImage()
                 }

@@ -49,6 +49,7 @@ class MainViewController: UIViewController {
         dateFormatter.dateFormat = "YYYY.M.d"
         dateFormatter.locale = NSLocale(localeIdentifier: "ko_KR") as Locale
         
+        
         let filter = tasks.filter { $0.date == dateFormatter.string(from: date)}
         
         if filter.count > 0 {
@@ -101,7 +102,6 @@ class MainViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.addSubview(refreshControl)
-        
     }
 }
 
@@ -122,6 +122,7 @@ extension MainViewController: StoryboardView {
             .bind { (task) in
                 print(debug: task)
                 self.tasks.append(contentsOf: task)
+                print(debug: self.tasks)
                 self.collectionView.reloadData()
                 self.todoCheck()
             }.disposed(by: disposeBag)
@@ -160,10 +161,9 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.circleButton.tintColor = UIColor.black
         
         cell.dateLabel.textColor = UIColor.white
-        cell.dateLabel.attributedText = NSAttributedString(string: tasks[indexPath.row].date
-                                                            ?? "", attributes: [.font: UIFont.systemFont(ofSize: 18.0, weight: .medium), .foregroundColor: UIColor.white])
+        cell.dateLabel.attributedText = NSAttributedString(string: tasks[indexPath.row].date ?? "", attributes: [.font: UIFont.systemFont(ofSize: 18.0, weight: .semibold), .foregroundColor: UIColor.white])
         
-        cell.tagLabel.text = "#해시태그 #들어가야 #하는 #자리"
+        cell.tagLabel.attributedText = NSAttributedString(string: "#해시태그 #들어가야 #하는 #자리", attributes: [.font: UIFont.systemFont(ofSize: 14.0, weight: .medium)])
         cell.tagLabel.textColor = UIColor.white
         
         cell.layoutIfNeeded()

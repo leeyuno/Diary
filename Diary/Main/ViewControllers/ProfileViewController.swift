@@ -53,10 +53,10 @@ class ProfileViewController: UIViewController {
         // config month header
         config.monthHeight = 20
         config.monthStrings = DateFormatter().shortMonthSymbols
-        config.monthFont = UIFont.systemFont(ofSize: 12)
+        config.monthFont = UIFont.systemFont(ofSize: 11)
         config.monthColor = UIColor.black
         // config weekday label on left
-        config.weekDayFont = UIFont.systemFont(ofSize: 12)
+        config.weekDayFont = UIFont.systemFont(ofSize: 11)
         config.weekDayWidth = 30
         config.weekDayColor = UIColor.black
         
@@ -68,7 +68,6 @@ class ProfileViewController: UIViewController {
         let stDate = dateForamtter.date(from: startDate)
         let stringToDate = dateForamtter.string(from: date)
         let endDate = dateForamtter.date(from: stringToDate)
-        print(debug: startDate)
 //        let calendar = CalendarHeatmap(startDate: dateToString!)
         let calendar = CalendarHeatmap(config: config, startDate: stDate!, endDate: endDate!)
         calendar.delegate = self
@@ -139,10 +138,7 @@ extension ProfileViewController: CalendarHeatmapDelegate {
               let month = dateComponents.month,
               let day = dateComponents.day else { return .clear}
         let dateString = "\(year).\(month).\(day)"
-//        print(debug: heatmapList)
-        print(debug: "\(dateString) \(heatmapList)")
-        print(debug: heatmapList.contains(dateString))
-        return heatmapList.contains(dateString) ? UIColor.blue : UIColor.lightGray
+        return heatmapList.contains(dateString) ? UIColor.systemGreen : UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.0)
 //        return data[dateString] ?? UIColor.lightGray
     }
 }

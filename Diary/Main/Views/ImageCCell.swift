@@ -31,10 +31,7 @@ class ImageCCell: UICollectionViewCell {
     
     var feel: Int = 0
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        
+    func cellInit() {
         circleButton.isHidden = true
         circleButton.delegate = self
         circleButton.setImage(UIImage(systemName: "smiley"), for: .normal)
@@ -63,7 +60,13 @@ class ImageCCell: UICollectionViewCell {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+        
+        cellInit()
     }
     
     @objc private func keyboardWillShow(_ notification: Notification) {

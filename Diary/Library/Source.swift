@@ -22,17 +22,18 @@ class Source {
         
         return session
     }()
-    
-    
 }
 
 extension Source: RequestRetrier, RequestAdapter, RequestInterceptor {
     func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
         print(debug: urlRequest)
+        
+        completion(.success(urlRequest))
     }
     
     func retry(_ request: Request, for session: Session, dueTo error: Error, completion: @escaping (RetryResult) -> Void) {
-        print(debug: "\(request.response?.url?.absoluteString ?? "") \(request.response?.statusCode ?? 0) \(request.retryCount)")
+        print(debug: request.response)
+//        print(debug: "\(request.response?.url?.absoluteString ?? "") \(request.response?.statusCode ?? 0) \(request.retryCount)")
         
         guard let statusCode = request.response?.statusCode, request.retryCount < 1 else {
             completion(.doNotRetryWithError(error))

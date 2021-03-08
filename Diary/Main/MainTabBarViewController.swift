@@ -18,14 +18,14 @@ class MainTabBarViewController: UITabBarController {
         
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0, weight: .semibold), NSAttributedString.Key.foregroundColor: UIColor.black]
         navigationController?.navigationBar.isTranslucent = true
-        navigationController?.navigationBar.tintColor = UIColor.black
+        navigationController?.navigationBar.tintColor = UIColor(named: "BarTintColor")
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         
-        
         tabBar.isTranslucent = false
         tabBar.shadowImage = UIImage()
-        tabBar.tintColor = UIColor.black
+//        tabBar.tintColor = UIColor.black
+        tabBar.tintColor = UIColor.white
         tabBar.backgroundColor = UIColor.darkGray
         tabBar.backgroundImage = UIImage()
         
@@ -46,15 +46,11 @@ class MainTabBarViewController: UITabBarController {
 }
 
 extension MainTabBarViewController: UITabBarControllerDelegate {
-    
+
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if tabBarController.selectedIndex == 1 {
             if let vc = viewController as? UploadViewController {
-                if Library.libObject.todo {
-                    Toast(text: "오늘 일기는 벌써 썼어요", delay: 0.0, duration: 3.0).show()
-                } else {
-                    vc.selectedImage()
-                }
+                vc.selectedImage()
             }
         }
     }

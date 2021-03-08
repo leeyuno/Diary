@@ -21,7 +21,6 @@ class LaunchViewController: UIViewController {
         
 //        fetchCoreData()
 //        let user = Auth.auth().currentUser
-//
 //        user?.delete(completion: { (error) in
 //            let vc = UIStoryboard(name: "SignIn", bundle: nil).instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
 //            vc.reactor = SignInViewReactor()
@@ -59,7 +58,7 @@ class LaunchViewController: UIViewController {
 //        print(debug: UserDefaults.standard.value(forKey: "userId"))
 //        print(debug: Auth.auth().currentUser)
         
-        if let _ = Auth.auth().currentUser {
+        if let user = Auth.auth().currentUser {
             moveToMain()
         } else {
             let vc = UIStoryboard(name: "SignIn", bundle: nil).instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController

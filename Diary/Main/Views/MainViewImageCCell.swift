@@ -19,9 +19,7 @@ class MainViewImageCCell: UICollectionViewCell {
 //    var gradientLayer: CAGradientLayer!
     
     override func awakeFromNib() {
-        super.awakeFromNib()
-//        circleButton.isEnabled = false
-        
+        super.awakeFromNib()        
         circleButton.isSelected = false
         
         imageView.contentMode = .scaleAspectFill
@@ -30,6 +28,7 @@ class MainViewImageCCell: UICollectionViewCell {
         
         circleButton.layer.masksToBounds = true
         circleButton.layer.cornerRadius = 25
+        
         
 //        setGradient()
     }

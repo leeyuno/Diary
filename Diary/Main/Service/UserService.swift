@@ -25,7 +25,7 @@ final class UserService: UserServiceType {
     
     func create(userID: String) -> Observable<Bool> {
         return Observable.create { (observer) -> Disposable in
-            AF.request(URL(string: Library.libObject.url + "/register")!, method: .post, parameters: ["userID": userID], encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+            Source.httpSource.sessionManager.request(URL(string: Library.libObject.url + "/register")!, method: .post, parameters: ["userID": userID], encoding: JSONEncoding.default, headers: nil).validate().responseJSON { (response) in
                 switch response.result {
                 case .success(let value):
                     print(debug: value)

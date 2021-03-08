@@ -51,7 +51,7 @@ class ProfileViewReactor: Reactor {
     private func fetch(userID: String) -> Observable<[String: [String]]> {
         var array = [String]()
         return Observable.create { (observer) -> Disposable in
-            AF.request(URL(string: Library.libObject.url + "/writeList")!, method: .post, parameters: ["userID": userID], encoding: JSONEncoding.default, headers: nil, interceptor: nil, requestModifier: nil).responseJSON { (response) in
+            Source.httpSource.sessionManager.request(URL(string: Library.libObject.url + "/writeList")!, method: .post, parameters: ["userID": userID], encoding: JSONEncoding.default, headers: nil, interceptor: nil, requestModifier: nil).validate().responseJSON { (response) in
                 switch response.result {
                 case .success(let value):
                     if let json = value as? NSDictionary {

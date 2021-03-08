@@ -43,53 +43,23 @@ class MainViewController: UIViewController {
         let data2: [String: Any] = ["date": "2012-03-11", "tags": ["불합격", "우울", "소주한잔"], "feel": 3]
     }
     
-    private func todoCheck() {
-        let date = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY.M.d"
-        dateFormatter.locale = NSLocale(localeIdentifier: "ko_KR") as Locale
-        
-        
-        let filter = tasks.filter { $0.date == dateFormatter.string(from: date)}
-        
-        if filter.count > 0 {
-            Library.libObject.todo = true
-        } else {
-            Library.libObject.todo = false
-        }
-        
-        refreshControl.endRefreshing()
-    }
-    
-    private func fetchData() {
-        let userID = Auth.auth().currentUser?.uid
-        
-        AF.request(URL(string: Library.libObject.url + "/myDiary")!, method: .post, parameters: ["userID": userID ?? ""], encoding: JSONEncoding.default, headers: nil, interceptor: nil, requestModifier: nil).responseJSON { [weak weakSelf = self] (response) in
-            switch response.result {
-            case .success(let value):
-                if let json = value as? NSDictionary {
-                    let code = json["code"] as! Int
-                    
-                    if code == 200 {
-                        if let result = json["result"] as? NSArray {
-                            for item in result {
-                                if let jsonData = try? JSONSerialization.data(withJSONObject: item, options: []) {
-                                    if let decoder = try? JSONDecoder().decode(Task.self, from: jsonData) {
-                                        weakSelf?.tasks.append(decoder)
-                                    }
-                                }
-                            }
-                        }
-                    } else {
-                        Toast(text: "아직 작성된 일기가 없어요", delay: 0.0, duration: 5.0).show()
-                    }
-                    weakSelf?.configureCollectionView()
-                }
-            case .failure(let error):
-                print(debug: "Error: \(error.localizedDescription)")
-            }
-        }
-    }
+//    private func todoCheck() {
+//        let date = Date()
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "YYYY.M.d"
+//        dateFormatter.locale = NSLocale(localeIdentifier: "ko_KR") as Locale
+//        
+//        
+//        let filter = tasks.filter { $0.date == dateFormatter.string(from: date)}
+//        
+//        if filter.count > 0 {
+//            Library.libObject.todo = true
+//        } else {
+//            Library.libObject.todo = false
+//        }
+//        
+//        refreshControl.endRefreshing()
+//    }
     
     private func configureCollectionView() {
         collectionView.layoutIfNeeded()
@@ -120,11 +90,11 @@ extension MainViewController: StoryboardView {
         //state
         reactor.state.asObservable().map { $0.data }
             .bind { (task) in
-                print(debug: task)
                 self.tasks.append(contentsOf: task)
-                print(debug: self.tasks)
                 self.collectionView.reloadData()
-                self.todoCheck()
+                self.refreshControl.endRefreshing()
+//                self.todoCheck()
+                print(debug: self.tasks)
             }.disposed(by: disposeBag)
     }
 }
@@ -159,11 +129,17 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         cell.imageView.kf.setImage(with: URL(string: Library.libObject.url + "/images/\(tasks[indexPath.row].image?[0] ?? "")"))
         cell.circleButton.tintColor = UIColor.black
+        let item = FeelImages.sharedInstance.items[tasks[indexPath.row].feels?[0] ?? 0]
+        
+        cell.circleButton.setImage(UIImage(systemName: item.icon), for: .normal)
+        cell.circleButton.backgroundColor = item.color
+        cell.circleButton.isSelected = false
+        cell.circleButton.buttonsCount = 0
         
         cell.dateLabel.textColor = UIColor.white
         cell.dateLabel.attributedText = NSAttributedString(string: tasks[indexPath.row].date ?? "", attributes: [.font: UIFont.systemFont(ofSize: 18.0, weight: .semibold), .foregroundColor: UIColor.white])
         
-        cell.tagLabel.attributedText = NSAttributedString(string: "#해시태그 #들어가야 #하는 #자리", attributes: [.font: UIFont.systemFont(ofSize: 14.0, weight: .medium)])
+        cell.tagLabel.attributedText = NSAttributedString(string: tasks[indexPath.row].contents?[0] ?? "", attributes: [.font: UIFont.systemFont(ofSize: 14.0, weight: .medium)])
         cell.tagLabel.textColor = UIColor.white
         
         cell.layoutIfNeeded()

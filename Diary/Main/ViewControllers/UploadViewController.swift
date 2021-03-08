@@ -47,7 +47,7 @@ class UploadViewController: UIViewController {
     
     var disposeBag: DisposeBag = DisposeBag()
     
-    var tagList: [String] = [""]
+//    var tagList: [String] = [""]
     var imageList: [UIImage] = [UIImage]()
     var imageNameList: [String] = [String]()
     
@@ -78,10 +78,10 @@ class UploadViewController: UIViewController {
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         
         dateLabel.text = dateFormatter.string(from: date)
-        
-        if !Library.libObject.todo {
-            tabBarController?.navigationItem.rightBarButtonItem = rightItem
-        }
+        tabBarController?.navigationItem.rightBarButtonItem = rightItem
+//        if !Library.libObject.todo {
+//            tabBarController?.navigationItem.rightBarButtonItem = rightItem
+//        }
         
         if let mainData = tasks {
             collectionView.layoutIfNeeded()
@@ -118,13 +118,20 @@ class UploadViewController: UIViewController {
         Toast(text: "오늘 일기쓰기 끝!").show()
         imageList.removeAll()
         dateLabel.isHidden = true
-        tagTextView.text = ""
-        tagTextView.isHidden = true
+//        tagTextView.text = ""
+//        tagTextView.isHidden = true
         
-        circleButton.isHidden = true
-        circleButton.setImage(UIImage(systemName: "smiley"), for: .normal)
-        circleButton.setImage(UIImage(systemName: "smiley"), for: .selected)
-        circleButton.backgroundColor = UIColor.white
+//        circleButton.isHidden = true
+//        circleButton.setImage(UIImage(systemName: "smiley"), for: .normal)
+//        circleButton.setImage(UIImage(systemName: "smiley"), for: .selected)
+//        circleButton.backgroundColor = UIColor.white
+        
+        tasks = nil
+        contents.removeAll()
+        feels.removeAll()
+        imageList.removeAll()
+        imageNameList.removeAll()
+
         
         collectionView.reloadData()
         
@@ -179,6 +186,7 @@ extension UploadViewController: UIScrollViewDelegate {
 extension UploadViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print(debug: imageList)
         if tasks == nil {
             return imageList.count
         } else {
@@ -194,6 +202,7 @@ extension UploadViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCCell", for: indexPath) as! ImageCCell
         
         if tasks == nil {
+            cell.cellInit()
             cell.imageView.image = imageList[indexPath.row]
         } else {
 //            let item = FeelImages.sharedInstance.items[Int(tasks?.feels?[indexPath.row] ?? "0")!]
@@ -207,6 +216,7 @@ extension UploadViewController: UICollectionViewDelegate, UICollectionViewDataSo
             cell.imageView.kf.setImage(with: URL(string: Library.libObject.url + "/images/\(tasks?.image?[indexPath.row] ?? "")"))
             cell.textView.attributedText = NSAttributedString(string: tasks?.contents?[indexPath.row] ?? "", attributes: [.font: UIFont.systemFont(ofSize: 15.0, weight: .regular), .paragraphStyle: paragraphStyle, .foregroundColor: UIColor.white, .kern: 1.1])
             cell.textViewHeight.constant = (tasks?.contents?[indexPath.row] ?? "").textViewHeight(collectionView.frame.width - 50, font: UIFont.systemFont(ofSize: 15.0, weight: .regular), lineSpacing: 3.5)
+            cell.circleButton.buttonsCount = 0
         }
         
         cell.tag = indexPath.row
@@ -241,11 +251,10 @@ extension UploadViewController: StoryboardView {
         //state
         reactor.state.map {
             $0.isLoadingResult
-        }.distinctUntilChanged()
-        .subscribe(onNext: { [weak weakSelf = self] (state) in
+        }.subscribe(onNext: { [weak weakSelf = self] (state) in
             if let state = state {
                 if state {
-                    Library.libObject.todo = true
+//                    Library.libObject.todo = true
                     weakSelf?.viewInitialize()
                 } else {
 //                    Toast(text: "오늘 일기는 벌써 썼어요", delay: 0.0, duration: 5.0).show()

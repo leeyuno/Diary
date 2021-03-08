@@ -111,26 +111,25 @@ class SignInViewController: UIViewController {
         return hashString
     }
     
-    func register(userID: String) {
+    func register() {
         let date = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy.M.d"
         dateFormatter.locale = Locale(identifier: "ko_KR")
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        
+
         let startDate = dateFormatter.string(from: date)
-        
-        AF.request(URL(string: Library.libObject.url + "/register")!, method: .post, parameters: ["userID": userID, "startDate": startDate], encoding: JSONEncoding.default, headers: nil, interceptor: nil, requestModifier: nil).responseJSON { [weak weakSelf = self] (response) in
+
+        Source.httpSource.sessionManager.request(URL(string: Library.libObject.url + "/register")!, method: .post, parameters: ["userID": Auth.auth().currentUser?.uid ?? "", "startDate": startDate], encoding: JSONEncoding.default, headers: nil, interceptor: nil, requestModifier: nil).validate().responseJSON { [weak weakSelf = self] (response) in
             switch response.result {
             case .success(let value):
-                print(debug: value)
                 if let json = value as? NSDictionary {
                     let code = json["code"] as! Int
-                    
-                    if code == 200 {
 
+                    if code == 200 {
+                        weakSelf?.moveToMain()
                     } else {
-                        
+
                     }
                 }
             case .failure(let error):
@@ -154,8 +153,13 @@ extension SignInViewController: StoryboardView {
     func bind(reactor: SignInViewReactor) {
         //action
         
-        
         //state
+        reactor.state.asObservable().map { $0.regist }
+            .bind { [weak weakSelf = self] (status) in
+                if status {
+                    weakSelf?.moveToMain()
+                }
+            }.disposed(by: disposeBag)
     }
 }
 
@@ -188,9 +192,10 @@ extension SignInViewController: ASAuthorizationControllerDelegate, ASAuthorizati
                     return
                 } else {
                     let userIdentifier = appleIDCredential.user
+//                    Reactor.Action.register
+                    weakSelf?.register()
                     
-                    weakSelf?.register(userID: Auth.auth().currentUser?.uid ?? "")
-                    weakSelf?.moveToMain()
+//                    weakSelf?.moveToMain()
                 }
             }
             

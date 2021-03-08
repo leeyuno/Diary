@@ -32,7 +32,7 @@ final class TaskService: TaskserviceType {
     func fetchTask() -> Observable<[Task]> {
         var tasks = [Task]()
         return Observable.create { (observer) -> Disposable in
-            AF.request(URL(string: Library.libObject.url + "/myDiary")!, method: .post, parameters: ["userID": Auth.auth().currentUser?.uid ?? ""], encoding: JSONEncoding.default, headers: nil, interceptor: nil, requestModifier: nil).responseJSON { [weak weakSelf = self] (response) in
+            Source.httpSource.sessionManager.request(URL(string: Library.libObject.url + "/myDiary")!, method: .post, parameters: ["userID": Auth.auth().currentUser?.uid ?? ""], encoding: JSONEncoding.default, headers: nil, interceptor: nil, requestModifier: nil).validate(statusCode: 200 ..< 400).responseJSON { [weak weakSelf = self] (response) in
                 switch response.result {
                 case .success(let value):
                     if let json = value as? NSDictionary {
@@ -61,7 +61,7 @@ final class TaskService: TaskserviceType {
     @discardableResult
     func saveTask(_ tasks: [String: Any]) -> Observable<Bool> {
         let uid = Auth.auth().currentUser?.uid
-        print(debug: "upload")
+        print(debug: tasks)
         return Observable.create { (observer) -> Disposable in
             AF.upload(multipartFormData: { (multipartFormData) in
                 if let images = tasks["image"] as? [UIImage] {
@@ -89,6 +89,7 @@ final class TaskService: TaskserviceType {
             }, to: Library.libObject.url + "/uploadPhoto", method: .post, headers: nil).uploadProgress(queue: .main, closure: { (progress) in
                 print(debug: "Upload Progress: \(progress.fractionCompleted)")
             }).responseJSON(completionHandler: { (response) in
+                print(debug: response)
                 switch response.result {
                 case .success(let value):
                     if let json = value as? NSDictionary {
@@ -100,7 +101,7 @@ final class TaskService: TaskserviceType {
                             observer.onNext(false)
                         }
                     }
-                    
+                        
                     observer.onCompleted()
                 case .failure(let error):
                     print(debug: "Error: \(error.localizedDescription)")

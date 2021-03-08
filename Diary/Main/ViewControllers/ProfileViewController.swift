@@ -54,11 +54,12 @@ class ProfileViewController: UIViewController {
         config.monthHeight = 20
         config.monthStrings = DateFormatter().shortMonthSymbols
         config.monthFont = UIFont.systemFont(ofSize: 11)
-        config.monthColor = UIColor.black
+        config.monthColor = UIColor(named: "BarTintColor")!
         // config weekday label on left
         config.weekDayFont = UIFont.systemFont(ofSize: 11)
         config.weekDayWidth = 30
-        config.weekDayColor = UIColor.black
+        config.weekDayColor = UIColor(named: "BarTintColor")!
+        config.backgroundColor = UIColor.clear
         
         let date = Date()
         let dateForamtter = DateFormatter()
@@ -71,6 +72,7 @@ class ProfileViewController: UIViewController {
 //        let calendar = CalendarHeatmap(startDate: dateToString!)
         let calendar = CalendarHeatmap(config: config, startDate: stDate!, endDate: endDate!)
         calendar.delegate = self
+        calendar.backgroundColor = UIColor.clear
         return calendar
     }()
     
